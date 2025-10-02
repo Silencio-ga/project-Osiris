@@ -1,8 +1,8 @@
-from core import game
-from story import intro
+#from core import game (es para arranca la lógica del juego)
+from story.intro import intro
 
 def main():
-    pass
+    intro()
 
 if __name__ == '__main__':
     main()
