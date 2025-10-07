@@ -1,13 +1,12 @@
-import 
+import random
 
 #sistema de combate bien pro
 
 def combat(player, enemy): 
     print(f"\n comienza la batalla! te ataca un {enemy["nombre"]}\n")
-
     #empieza el turno del jugador
 
-    while player ["hp"] > 0 and enemy["hp"] > 0:
+    while player["hp"] > 0 and enemy["hp"] > 0:
         print(f"HP del Jugador: {player["hp"]} | HP del enemigo: {enemy["hp"]}")
         action = input("Atacar o defenderse? ").lower()
 

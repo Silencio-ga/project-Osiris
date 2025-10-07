@@ -48,20 +48,9 @@ def titulo():
     
 
 
-# funcion de la intro del juego, con titulo y menu
+
+# funcion principal | intro del juego, con titulo y menu
 def intro():
     titulo()
     opcion_num = menu()
     return opcion_num
-
-
-"""
-    
-    if menu_opcion == 1:
-        (llama la pactida guarada en la base de dato
-        y ejecutada)
-
-    if menu_opcion == 2:
-        
-    elif menu_opcion == 3:
-"""
