@@ -1,7 +1,7 @@
 import  random 
 class personajes:
     def __init__(self,vida=int)->None:
-        vida= vida
+        vida = vida
 
     def recibir_daño(self): #esto es la funcion de como reciben daño los personajes
         vida -= daño_ememigo
