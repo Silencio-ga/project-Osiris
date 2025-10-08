@@ -8,3 +8,4 @@ def efect_text_gradual(texto, tmp):
 
 texto = "hola marcos... ¿como estas?\nno me improta!!!\n"
 
+efect_text_gradual(texto, 0.25)
