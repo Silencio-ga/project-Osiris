@@ -1,10 +1,19 @@
 import random
-
+from player import personajes
 class enemigos:
-    def __init__(self,hp, atk):
+    def __init__(self,hp,atk):
         self.hp = hp
         self.atk = atk
         self.tipo = self.__class__.__name__ #esto guarda el tipo de enemigo(zombi,esqueleto)
+        self.muerto = False
+    
+    def recibir_daño_enemigos(self,daño_fisico, daño_magico,hp):
+        if self.hp <= 0:
+            self.hp = 0
+            self.muerto = True
+            print (f"{personajes.nombre} derrotaste a {enemigos.tipo}")
+        else:
+            print (f"{enemigos.tipo} recibió {personajes.daño} de {personajes.nombre}")        
 
 class esqueleto(enemigos):
     def __init__(self):
