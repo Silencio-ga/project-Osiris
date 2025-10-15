@@ -7,7 +7,7 @@ class Enemigo:
         self.tipo = self.__class__.__name__ #esto guarda el tipo de enemigo(zombi,esqueleto)
         self.muerto = False
     
-    def recibir_daño_enemigo(self,daño,hp):
+    def Recibir_daño_enemigo(self,daño,hp):
         hp -= daño
         if hp <= 0:
             self.hp = 0

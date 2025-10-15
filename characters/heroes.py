@@ -8,6 +8,7 @@ class Personaje:
         self.vivo= True
         self.nombre = nombre
         self.daño = 0
+        self.oro = 0
     
 
     def recibir_daño(self)->None: #esto es la funcion de como reciben daño los personajes
@@ -52,5 +53,5 @@ class Mago(Personaje):
         super().__init__(vida,nombre,daño)
     def bola_de_fuego(self)->None:
         print(f"Mago lanza una bola de fuego a {Enemigo.tipo}")
-        Enemigo.recibir_daño_enemigos(self.daño_magico*len(Grupo_enemigo))
+        Enemigo.Recibir_daño_enemigo(self.daño*len(Grupo_enemigo))
 
