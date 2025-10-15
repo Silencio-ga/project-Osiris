@@ -25,12 +25,8 @@ class Personaje:
         print (f"{self.nombre} ataca a {Enemigo.tipo}")
         print (f"{Enemigo.tipo} recibe {daño_infligido} de daño")
 
-class Fisico(Personaje): #Esta es la clase que divide los personajes con daño magico de los de daño fisico
-    def __init__(self,vida, daño, nombre)->None:
-        super().__init__(vida, nombre, daño)
-        self.daño = daño
             
-class Caballero(Fisico):
+class Caballero(Personaje):
     def __init__(self,vida, daño,)->None:
         super().__init__(vida, daño)
         self.def_escudo = 30
@@ -41,7 +37,7 @@ class Caballero(Fisico):
         super().recibir_daño(daño_reducido)
 
 
-class Arquero(Fisico):
+class Arquero(Personaje):
     def __init__(self,vida,daño,nombre)->None:
         super().__init__(vida, daño, nombre)
 
