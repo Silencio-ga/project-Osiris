@@ -8,6 +8,7 @@ class Personaje:
         self.vivo= True
         self.nombre = nombre
         self.daño = 0
+        self.oro = 0
     
 
     def recibir_daño(self)->None: #esto es la funcion de como reciben daño los personajes
@@ -25,12 +26,8 @@ class Personaje:
         print (f"{self.nombre} ataca a {Enemigo.tipo}")
         print (f"{Enemigo.tipo} recibe {daño_infligido} de daño")
 
-class Fisico(Personaje): #Esta es la clase que divide los personajes con daño magico de los de daño fisico
-    def __init__(self,vida, daño, nombre)->None:
-        super().__init__(vida, nombre, daño)
-        self.daño = daño
             
-class Caballero(Fisico):
+class Caballero(Personaje):
     def __init__(self,vida, daño,)->None:
         super().__init__(vida, daño)
         self.def_escudo = 30
@@ -41,7 +38,7 @@ class Caballero(Fisico):
         super().recibir_daño(daño_reducido)
 
 
-class Arquero(Fisico):
+class Arquero(Personaje):
     def __init__(self,vida,daño,nombre)->None:
         super().__init__(vida, daño, nombre)
 
@@ -56,5 +53,5 @@ class Mago(Personaje):
         super().__init__(vida,nombre,daño)
     def bola_de_fuego(self)->None:
         print(f"Mago lanza una bola de fuego a {Enemigo.tipo}")
-        Enemigo.recibir_daño_enemigos(self.daño_magico*len(Grupo_enemigo))
+        Enemigo.Recibir_daño_enemigo(self.daño*len(Grupo_enemigo))
 
