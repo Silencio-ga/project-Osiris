@@ -2,35 +2,64 @@ import random
 
 #sistema de combate bien pro
 
-def combat(player, enemy): 
-    print(f"\n comienza la batalla! te ataca un {enemy["nombre"]}\n")
+def combat(jugador, enemigo): 
+    print(f"\n comienza la batalla! te ataca un {enemigo.tipo}\n")
     #empieza el turno del jugador
 
-    while player["hp"] > 0 and enemy["hp"] > 0:
-        print(f"HP del Jugador: {player["hp"]} | HP del enemigo: {enemy["hp"]}")
-        action = input("Atacar o defenderse? ").lower()
+    turno = 1
+    while jugador.vida > 0 and enemigo.hp > 0:
+        print(f"--- Turno {turno} ---")
+        print(f"{jugador.nombre} HP: {jugador.vida}")
+        print(f"{enemigo.tipo} HP: {enemigo.hp}\n")
 
-        if action == "atacar":
-            damage = random.randint(player["ataque"] - 2, player["attac"] + 2)
-            print(f"Atacas y dañas al enemigo por {damage} puntos de daño!")
-            enemy["hp"] -= damage 
-        elif action == "defenderse": 
-            print("Te preparas para defenderte y reduces el daño en un 50%.")
-        else:
-            print("Esa accion no funciona y pierdes tu turno.")
+        # menu de eleccion
+        while True:
+            print("1️⃣  Atacar")
+            print("2️⃣  Habilidad especial\n")
+            accion = input("Elige una opción (1 o 2): ")
 
-        if enemy["hp"] <= 0:
-            print(f"\n Derrotaste a {enemy["nombre"]}!")
-            return "Victoria asegurada!"
+            if accion == "1":
+                daño = jugador.daño  # daño fijo que elija el marcos
+                print(f"\n{jugador.nombre} ataca causando {daño} de daño a {enemigo.tipo}.")
+                enemigo.hp -= daño
+                if enemigo.hp <= 0:
+                    enemigo.muerto = True
+                    print(f"{enemigo.tipo} ha sido derrotado.")
+                break
+
+            elif accion == "2":
+                usar_habilidad_especial(jugador, enemigo)
+                break
+
+            else:
+                print(" Opcion invalida. Inténtalo de nuevo.\n")
+
+
+        # turno del enemigo
+        if not enemigo.muerto:
+            daño_enemigo = enemigo.atk
+            print(f"\n{enemigo.tipo} ataca infligiendo {daño_enemigo} puntos de daño.")
+            jugador.vida -= daño_enemigo
+
+            if jugador.vida <= 0:
+                jugador.vida = 0
+                jugador.vivo = False
+                print(f"{jugador.nombre} fue derrotado por el {enemigo.tipo}.")
+
+        turno += 1
+
+# fin del combate
+
+    if jugador.vida > 0:
+        print(f"\n{jugador.nombre} ganó la batalla contra el {enemigo.tipo}!")
+        oro_ganado = random.randint(5, 25)
+        xp_ganada = random.randint(10, 40)
+
+        print(f"Oro ganado: {oro_ganado} | XP ganada: {xp_ganada}")
         
-    #turno del enemigo 
+        return {"oro": oro_ganado, "xp": xp_ganada}
+    else:
+        print(f"\n{jugador.nombre} cayó en combate...")
+        return {"oro": 0, "xp": 0}
 
-        damage_enemy = random.randint(enemy["ataque"] - 1, enemy["ataque"] + 2)
-        if action == "defenderse":
-            damage_enemy //= 2
-        player["hp"] -= damage_enemy
-        print(f"{enemy["nombre"]} te ataca e inflige {damage_enemy} de daño. \n")
-
-    if player["hp"] <=0:
-        print("Fuiste derrotado por {enemy["nombre"]}.")
-        return "derrota"
+# NO esta terminado todavia
