@@ -7,6 +7,8 @@ def combat(jugador, enemigo):
     #empieza el turno del jugador
 
     turno = 1
+    
+    jugador.defensa_activa = False
     while jugador.vida > 0 and enemigo.hp > 0:
         print(f"--- Turno {turno} ---")
         print(f"{jugador.nombre} HP: {jugador.vida}")
@@ -14,9 +16,9 @@ def combat(jugador, enemigo):
 
         # menu de eleccion
         while True:
-            print("1️⃣  Atacar")
-            print("2️⃣  Habilidad especial\n")
-            accion = input("Elige una opción (1 o 2): ")
+            print("[1]  Atacar")
+            print("[2]  Habilidad especial\n")
+            accion = input("elegir una opción (1 o 2): ")
 
             if accion == "1":
                 daño = jugador.daño  # daño fijo que elija el marcos
@@ -32,7 +34,7 @@ def combat(jugador, enemigo):
                 break
 
             else:
-                print(" Opcion invalida. Inténtalo de nuevo.\n")
+                print(" opcion invalida. Inténtalo de nuevo.\n")
 
 
         # turno del enemigo
@@ -62,4 +64,5 @@ def combat(jugador, enemigo):
         print(f"\n{jugador.nombre} cayó en combate...")
         return {"oro": 0, "xp": 0}
 
-# NO esta terminado todavia
+# habilidades de los personajes va a ir aca 
+
