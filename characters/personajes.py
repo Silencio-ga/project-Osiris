@@ -20,6 +20,8 @@ class Entidad:
             print(f"{self.nombre} recibió daño de {Enemigo.tipo}\n Vida restante: {self.vida}")
         
     def atacar(self, objetivo):
+        if  self.vivo and objetivo.vivo:
+            print (f"{self.nombre} ataca a {objetivo.nombre}!")
         daño_infligido = self.daño
         vida -= daño_infligido
         print (f"{self.nombre} ataca a {Enemigo.tipo}")
@@ -65,12 +67,13 @@ class Enemigo(Entidad):
 
 class Esqueleto(Entidad):
     def __init__(self,vida,daño):
-        super().__init__(vida, daño)
+        self.vida = 30
+        self.daño = 20
 
 class Zombi(Entidad):
     def __init__(self,vida,daño):
-        super().__init__(vida, daño)
-
+        self.vida = 40
+        self.daño = 15
 class Grupo_enemigo: 
     def __init__(self,max_esq=3, max_zb=2):
         self.g1 = self.grupo_aleatorio(max_esq,max_zb)
@@ -80,19 +83,21 @@ class Grupo_enemigo:
         self.g5 = self.grupo_aleatorio(max_esq,max_zb)
     
     def grupo_aleatorio(self,max_esq,max_zb): #esta funcion crea grupos de enemigos
+        grupo_en = []
         num_esqueletos = random.randint(1, max_esq)
-        num_zombis = random.randint(1,max_zb)
-        lista_esq = [Esqueleto() for _ in range(num_esqueletos)]
-        lista_zb = [Zombi() for _ in range(num_zombis)]
-        grupo_en = lista_esq + lista_zb
+        num_zombis = random.randint(0,max_zb)
+        for i in range(num_esqueletos):
+            grupo_en.append(Esqueleto(f"Esqueleto{i+1}",vida=30, daño=30))
+        for i in range(num_zombis):
+            grupo_en.append(Zombi(f"Zombi{i+1} ",vida=40, daño=15   ))
         random.shuffle(grupo_en)
         return grupo_en
     
-    def mostrar_grupo(self,num_grupos): #función que muestra 
+    def mostrar_grupo(self,num_grupos): #función que muestra el grupo de enemigos
         grupo_en = getattr(self,f"g{num_grupos}")
         print (f"\n--- El {num_grupos} esta conformado por {len(grupo_en)} enemigos")
         for i, enemigos in enumerate(grupo_en,1):
-            print (f"{i}:{Enemigo.tipo} |HP: {Enemigo.vida} | ATK: {Enemigo.daño}")
+            print (f"{i}:{Enemigo.tipo} |VIDA: {Enemigo.vida} | DAÑO: {Enemigo.daño}")
 
 hordas= Grupo_enemigo()
 hordas.mostrar_grupo(2)
