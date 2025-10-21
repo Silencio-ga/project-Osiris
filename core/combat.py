@@ -66,3 +66,28 @@ def combat(jugador, enemigo):
 
 # habilidades de los personajes va a ir aca 
 
+def usar_habilidad_especial(jugador, enemigo):
+    clase = jugador.__class__.__name__.lower()
+
+#caballero
+    if clase == "caballero":
+        print(f"\n{jugador.nombre} usa su escudo reduciendo el daño del próximo ataque a la mitad.")
+#arquero
+        enemigo.atk //= 2
+    elif clase == "arquero":
+        daño_total = jugador.daño * 3
+        print(f"\n {jugador.nombre} lanza una ráfaga de flechas causando {daño_total} de daño.")
+        enemigo.hp -= daño_total
+        if enemigo.hp <= 0:
+            enemigo.muerto = True
+            print(f"{enemigo.tipo} ha sido derrotado.")
+
+#mago
+
+    elif clase == "mago":
+        daño_magico = jugador.daño * 2 + 5
+        print(f"\n{jugador.nombre} lanza una bola de fuego causando {daño_magico} de daño.")
+        enemigo.hp -= daño_magico
+        if enemigo.hp <= 0:
+            enemigo.muerto = True
+            print(f"{enemigo.tipo} fue reducido a cenizas.")
