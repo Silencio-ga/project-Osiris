@@ -1,76 +1,71 @@
 import  random
 
 class Entidad:
-    def __init__(self,vida:int, nombre:str)->None:
+    def __init__(self,vida:int, daño:int, nombre:str, tipo: str = None)->None:
         self.vida = vida
-        self.vida_max = vida
-        self.vivo= True
+        self.daño = daño
         self.nombre = nombre
-        self.daño = 0
-        self.oro = 0
-        self.tipo = self.__class__.__name__ # guarda el tipo de enemigo(zombi,esqueleto)
+        self.tipo = tipo or self.__class__.__name__ # guarda el tipo de enemigo(zombi,esqueleto)
 
     def recibir_daño(self, nombre, tipo)->None: #funcion de como reciben daño los personajes
         self.vida -= self.daño
         if self.vida <= 0:
             self.vida = 0
-            self.vivo = False
             print (f"{self.nombre} Murió")
         else:
-            print(f"{self.nombre} recibió daño de {Enemigo.tipo}\n Vida restante: {self.vida}")
+            print(f"{self.nombre} recibió daño de {enemigo.tipo}\n Vida restante: {self.vida}")
         
     def atacar(self, objetivo):
         daño_infligido = self.daño
         vida -= daño_infligido
-        print (f"{self.nombre} ataca a {Enemigo.tipo}")
-        print (f"{Enemigo.tipo} recibe {daño_infligido} de daño")
+        print (f"{self.nombre} ataca a {enemigo.tipo}")
+        print (f"{enemigo.tipo} recibe {daño_infligido} de daño")
 
-            
+#===========================
+#       Clase personajes
+#===========================
+
 class Caballero(Entidad):
-    def __init__(self,vida, daño,)->None:
-        super().__init__(vida, daño)
-        self.def_escudo = 30
-        
-    def recibir_daño(self)->None: #función de cubrirse con el escudo del caballero
-        daño_reducido= max(0, Enemigo.daño - self.def_escudo)
-        print(f"{Entidad.nombre} bloquea {self.def_escudo} de daño con su escudo")
-        super().recibir_daño(daño_reducido)
+    def __init__(self, vida, daño, nombre):
+        super().__init__(vida, daño, nombre, tipo="Caballero")
 
+    def habilidad_especial(self, enemigo):
+        print(f"{self.nombre} levanta su escudo y contraataca con furia sagrada!")
+        daño_extra = self.daño + 10
+        enemigo.recibir_daño(daño_extra, self.tipo)
 
-class Arquero(Entidad):
-    def __init__(self,vida,daño,nombre)->None:
-        super().__init__(vida, daño, nombre)
+class Arquera(Entidad):
+    def __init__(self, vida, daño, nombre):
+        super().__init__(vida, daño, nombre, tipo="Arquera")
 
-    def usar_ráfaga_de_flechas(self): #función de habilidad especial del arquero
-        cantidad_de_flechas = random.randint(1,5)
-        daño_ráfaga = self.daño * cantidad_de_flechas
-        print(f"{self.nombre} dispara {cantidad_de_flechas} flechas a {Enemigo.tipo} causando {daño_ráfaga}")
-        Enemigo.recibir_daño(daño_ráfaga)
+    def habilidad_especial(self, enemigo):
+        print(f"{self.nombre} dispara una lluvia de flechas precisas!")
+        daño_extra = self.daño + random.randint(5, 15)
+        enemigo.recibir_daño(daño_extra, self.tipo)
 
 class Mago(Entidad):
-    def __init__(self,vida,nombre,daño)->None:
-        super().__init__(vida,nombre,daño)
-    def bola_de_fuego(self)->None: #función de habilidad especial del mago
-        print(f"Mago lanza una bola de fuego a {Enemigo.tipo}")
-        Enemigo.recibir_daño(self.daño*len(Grupo_enemigo))
+    def __init__(self, vida, daño, nombre):
+        super().__init__(vida, daño, nombre, tipo="Mago")
+
+    def habilidad_especial(self, enemigo):
+        print(f"{self.nombre} lanza un hechizo devastador!")
+        daño_extra = self.daño * 2
+        enemigo.recibir_daño(daño_extra, self.tipo)
 
 
 #===========================
-#       Clase Enemgio
+#       Clase Enemgios
 #===========================
-
-class Enemigo(Entidad):
-    def __init__(self, vida, daño):
-        super().__init__(vida, daño)
-
-class Esqueleto(Entidad):
-    def __init__(self,vida,daño):
-        super().__init__(vida, daño)
 
 class Zombi(Entidad):
-    def __init__(self,vida,daño):
-        super().__init__(vida, daño)
+    def __init__(self, vida, daño, nombre):
+        super().__init__(vida, daño, nombre, tipo="Zombi")
 
+class Esqueleto(Entidad):
+    def __init__(self, vida, daño, nombre):
+        super().__init__(vida, daño, nombre, tipo="Esqueleto")
+
+"""
 class Grupo_enemigo: 
     def __init__(self,max_esq=3, max_zb=2):
         self.g1 = self.grupo_aleatorio(max_esq,max_zb)
@@ -96,3 +91,4 @@ class Grupo_enemigo:
 
 hordas= Grupo_enemigo()
 hordas.mostrar_grupo(2)
+"""
