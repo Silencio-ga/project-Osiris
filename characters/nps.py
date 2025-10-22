@@ -1,4 +1,4 @@
-from heroes import Personaje
+from personajes import Entidad
 
 
 class NPC:
