@@ -72,8 +72,9 @@ def usar_habilidad_especial(jugador, enemigo):
 #caballero
     if clase == "caballero":
         print(f"\n{jugador.nombre} usa su escudo reduciendo el daño del próximo ataque a la mitad.")
-#arquero
+
         enemigo.atk //= 2
+#arquero
     elif clase == "arquero":
         daño_total = jugador.daño * 3
         print(f"\n {jugador.nombre} lanza una ráfaga de flechas causando {daño_total} de daño.")
