@@ -15,9 +15,7 @@ class Entidad:
         else:
             print(f"{self.nombre} recibió daño de {self.tipo}\n Vida restante: {self.vida}")
         
-    def atacar(self, objetivo):
-        if  self.vivo and objetivo.vivo:
-            print (f"{self.nombre} ataca a {objetivo.nombre}!")
+    def atacar(self):
         daño_infligido = self.daño
         vida -= daño_infligido
         print (f"{self.nombre} ataca a {self.tipo}")
