@@ -13,15 +13,15 @@ class Entidad:
             self.vida = 0
             print (f"{self.nombre} Murió")
         else:
-            print(f"{self.nombre} recibió daño de {enemigo.tipo}\n Vida restante: {self.vida}")
+            print(f"{self.nombre} recibió daño de {self.tipo}\n Vida restante: {self.vida}")
         
     def atacar(self, objetivo):
         if  self.vivo and objetivo.vivo:
             print (f"{self.nombre} ataca a {objetivo.nombre}!")
         daño_infligido = self.daño
         vida -= daño_infligido
-        print (f"{self.nombre} ataca a {enemigo.tipo}")
-        print (f"{enemigo.tipo} recibe {daño_infligido} de daño")
+        print (f"{self.nombre} ataca a {self.tipo}")
+        print (f"{self.tipo} recibe {daño_infligido} de daño")
 
 #===========================
 #       Clase personajes
