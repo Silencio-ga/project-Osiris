@@ -1,4 +1,4 @@
-from core.tool import clear, linea_decorativa, center_text, efect_central_text, efect_text_gradual
+from core.tool import *
 import time
 
 # funcion para hacer el prologo
@@ -40,4 +40,6 @@ Algunos aún caminan entre sus cicatrices, arrastrando su cordura, buscando resp
 No son héroes, ni salvadores.
 Son los ecos de un mundo que intenta olvidarse a sí mismo.
 """
-    efect_central_text(tex_prologo)
+    efect_center_block_gradual(tex_prologo)
+    opcion_continua = input(center_text("Aprete 'enter' para continua: "))
+    
