@@ -1,24 +1,13 @@
 from core.tool import *
 import time
 
+# ==============
+# P R O L O G O
+# ==============
+
 # funcion para hacer el prologo
 def prologo():
-    titulo_prologo = [linea_decorativa("𓂃"), center_text("₊⋆✧ P R O J E C T   O S I R I S ✧⋆⁺"), linea_decorativa("𓂃")]
-
-    renglon1 = ""
-    renglon2 = ""
-    renglon3 = ""
-
-    # imprime el renglon1, 2 y 3 a la vez
-    total = len(titulo_prologo[0])
-    for i in range(total):
-        renglon1 += titulo_prologo[0][i]
-        renglon2 += titulo_prologo[1][i]
-        renglon3 += titulo_prologo[2][i]
-        print(f"{renglon1}\n{renglon2}\n{renglon3}")
-        time.sleep(0.01)
-        if i < total - 1:
-            clear()
+    titulo_lineas_decorativa("₊⋆✧ P R Ó L O G O ✧⋆⁺",tmp=0.005)
 
     tex_prologo = f"""
 Dicen que el mundo se partió en silencio.
@@ -40,6 +29,14 @@ Algunos aún caminan entre sus cicatrices, arrastrando su cordura, buscando resp
 No son héroes, ni salvadores.
 Son los ecos de un mundo que intenta olvidarse a sí mismo.
 """
-    efect_center_block_gradual(tex_prologo)
+    efect_center_block_gradual(tex_prologo,tmp=0.005)
     opcion_continua = input(center_text("Aprete 'enter' para continua: "))
-    
+
+
+# ================
+# MICRO-HISTORIAS
+# ================
+
+# Historia 
+def micro_historia(historia):
+    pass

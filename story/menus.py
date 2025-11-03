@@ -6,7 +6,7 @@ import os, shutil, time
 # ========================================
 
 # funcion de menu de inicio
-def mostrar_menu_inicio():
+def mostrar_menu_inicio(tmp=0.005):
     tex_menu = """
 Opciones:\n\n
 1. continuar \n
@@ -14,7 +14,7 @@ Opciones:\n\n
 3. salir \n
 """
 
-    efect_center_block_gradual(tex_menu)
+    efect_center_block_gradual(tex_menu,tmp)
     
     while True:
         try:
@@ -28,7 +28,7 @@ Opciones:\n\n
 
 
 # funcion del titulo
-def titulo():
+def titulo(tmp=0.07):
     tex_titulo = [
     "░█████╗░░██████╗██╗██████╗░██╗░██████╗",
     "██╔══██╗██╔════╝██║██╔══██╗██║██╔════╝",
@@ -42,14 +42,14 @@ def titulo():
     print("\n" * 2)
     for linea in tex_titulo:
         print(center_text(linea))
-        time.sleep(0.07)
+        time.sleep(tmp)
     print("\n" * 2)
 
 
 
 # funcion principal | intro del juego, con titulo y menu
 def intro():
-    titulo()
+    titulo(tmp=0.07)
     opcion = mostrar_menu_inicio()
     return opcion
 
@@ -57,7 +57,7 @@ def intro():
 #   FUNCIONES DEL MENÚ SELECCION DE PERSONAJE
 # =============================================
 
-def mostrar_menu_personajes():
+def mostrar_menu_personajes(tmp=0.005):
     menu_personajes = """
 Elige tu destino:\n
 [1] Eldric, el Caballero Gris
@@ -68,7 +68,7 @@ Elige tu destino:\n
     ➤ Sabiduría y locura. Manipula la magia prohibida.\n
 """
     
-    efect_center_block_gradual(menu_personajes)
+    efect_center_block_gradual(menu_personajes,tmp)
 
     while True:
         try:
@@ -85,19 +85,18 @@ Elige tu destino:\n
 # ================================
 
 
-def mostrar_menu_combate():
+def mostrar_menu_combate(tmp=0.005):
     menu_combate = """
 Elige una opcion:\n
 [1] Atacar\n
 [2] Habilidad especial\n
 """
 
-    efect_center_block_gradual(menu_combate)
+    efect_center_block_gradual(menu_combate,tmp)
 
     while True:
         try:
             opcion_combate = int(input(center_text("Elige un número: ")))
-            print(f"~{opcion_combate}~{type(opcion_combate)}")
             if opcion_combate in (1, 2):
                 return opcion_combate
             print(center_text("Opción inválida. Intenta nuevamente."))

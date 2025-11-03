@@ -31,7 +31,7 @@ def efect_central_text(text):
     efect_text_gradual(texto_centrado, 0.01)
 
 # funcion de bloque de texto centrado con efecto de escritura gradual
-def efect_center_block_gradual(text, delay=0.01):
+def efect_center_block_gradual(text, tmp=0.01):
     # calcula lo ancho de la terminal
     cols = shutil.get_terminal_size().columns
     # separa linea por linea el texto y lo guarda en lista
@@ -46,10 +46,29 @@ def efect_center_block_gradual(text, delay=0.01):
         linea_centrada = " " * margen_izq + linea
         for letra in linea_centrada:
             print(letra, end="", flush=True)
-            time.sleep(delay)
+            time.sleep(tmp)
         print()
     if text.endswith("\n"):
         print()
+
+# funcion de titulo entre lineas decorativas
+def titulo_lineas_decorativa(titulo,lineas="𓂃",tmp=0.01):
+    titulo_combat = [linea_decorativa(lineas), center_text(titulo), linea_decorativa(lineas)]
+
+    renglon1 = ""
+    renglon2 = ""
+    renglon3 = ""
+
+    # imprime el renglon1, 2 y 3 a la vez
+    total = len(titulo_combat[0])
+    for i in range(total):
+        renglon1 += titulo_combat[0][i]
+        renglon2 += titulo_combat[1][i]
+        renglon3 += titulo_combat[2][i]
+        print(f"{renglon1}\n{renglon2}\n{renglon3}")
+        time.sleep(tmp)
+        if i < total - 1:
+            clear()
 
 # --------
 
