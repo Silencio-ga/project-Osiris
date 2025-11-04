@@ -1,25 +1,19 @@
 import  random
 
 class Entidad:
-    def __init__(self,vida:int, daño:int, nombre:str, tipo: str = None)->None:
+    def __init__(self,vida:int, daño:int, nombre:str, tipo: str = "")->None:
         self.vida = vida
         self.daño = daño
         self.nombre = nombre
         self.tipo = tipo or self.__class__.__name__ # guarda el tipo de enemigo(zombi,esqueleto)
 
-    def recibir_daño(self, nombre, tipo)->None: #funcion de como reciben daño los personajes
-        self.vida -= self.daño
+    def recibir_daño(self, daño, tipo)->None: #funcion de como reciben daño los personajes
+        self.vida -= daño
         if self.vida <= 0:
             self.vida = 0
             print (f"{self.nombre} Murió")
         else:
-            print(f"{self.nombre} recibió daño de {self.tipo}\n Vida restante: {self.vida}")
-        
-    def atacar(self):
-        daño_infligido = self.daño
-        vida -= daño_infligido
-        print (f"{self.nombre} ataca a {self.tipo}")
-        print (f"{self.tipo} recibe {daño_infligido} de daño")
+            print(f"{self.nombre} recibió daño de {tipo}\n Vida restante: {self.vida}")
 
 #===========================
 #       Clase personajes
@@ -31,8 +25,8 @@ class Caballero(Entidad):
 
     def habilidad_especial(self, enemigo):
         print(f"{self.nombre} levanta su escudo y contraataca con furia sagrada!")
-        daño_extra = self.daño + 10
-        enemigo.recibir_daño(daño_extra, self.tipo)
+        daño_habilidad = self.daño + 10
+        enemigo.recibir_daño(daño_habilidad, self.tipo)
 
 class Arquera(Entidad):
     def __init__(self, vida, daño, nombre):
@@ -40,8 +34,8 @@ class Arquera(Entidad):
 
     def habilidad_especial(self, enemigo):
         print(f"{self.nombre} dispara una lluvia de flechas precisas!")
-        daño_extra = self.daño + random.randint(5, 15)
-        enemigo.recibir_daño(daño_extra, self.tipo)
+        daño_habilidad = self.daño + random.randint(5, 15)
+        enemigo.recibir_daño(daño_habilidad, self.tipo)
 
 class Mago(Entidad):
     def __init__(self, vida, daño, nombre):
@@ -49,8 +43,8 @@ class Mago(Entidad):
 
     def habilidad_especial(self, enemigo):
         print(f"{self.nombre} lanza un hechizo devastador!")
-        daño_extra = self.daño * 2
-        enemigo.recibir_daño(daño_extra, self.tipo)
+        daño_habilidad = self.daño * 2
+        enemigo.recibir_daño(daño_habilidad, self.tipo)
 
 
 #===========================

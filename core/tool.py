@@ -70,6 +70,10 @@ def titulo_lineas_decorativa(titulo,lineas="𓂃",tmp=0.01):
         if i < total - 1:
             clear()
 
+def menu_univesal(can_opciones,*valores):
+    for valores in range(can_opciones):
+        menu_opciones = f"{can}"
+
 # --------
 
 # =================

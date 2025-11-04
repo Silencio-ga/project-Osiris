@@ -1,5 +1,5 @@
 from story.menus import mostrar_menu_combate
-from core.tool import clear, linea_decorativa, center_text, titulo_lineas_decorativa, efect_center_block_gradual
+from core.tool import clear, center_text, titulo_lineas_decorativa, efect_center_block_gradual
 from characters.personajes import *
 import random, time
 
@@ -31,7 +31,7 @@ def combat(jugador, enemigo):
     while jugador.vida > 0 and enemigo.vida > 0:
         print(center_text(f"--- Turno {turno} ---"))
         print(f"{jugador.nombre} HP: {jugador.vida}")
-        print(f"{enemigo.tipo} HP: {enemigo.daño}\n")
+        print(f"{enemigo.tipo} HP: {enemigo.vida}\n")
 
         # menu de acciones
         while True:

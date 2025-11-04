@@ -1,5 +1,6 @@
+from story.microhistorias_sql import obtener_eventos_aleatorios
 from core.tool import *
-import time
+import time, random
 
 # ==============
 # P R O L O G O
@@ -38,5 +39,14 @@ Son los ecos de un mundo que intenta olvidarse a sí mismo.
 # ================
 
 # Historia 
-def micro_historia(historia):
+def micro_historia(personaje):
+    print(f"nombre {personaje.nombre}")
+    evento = obtener_eventos_aleatorios(personaje.nombre)
+
+    print(f"evento:  {evento}")
+    print()
+    _, personaje, titulo, descripcion_1_1, opcion_1_1, opcion_2_1, opcion_3_1, resultado_1, resultado_2, resultado_3 = evento
+    titulo_lineas_decorativa(titulo)
+
+if __name__ == "__main__":
     pass

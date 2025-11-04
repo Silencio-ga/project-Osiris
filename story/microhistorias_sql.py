@@ -1,5 +1,4 @@
-import sqlite3
-import os
+import sqlite3, os, random
 
 # ruta a la base de datos (ajustala si tu estructura cambia)
 DB_PATH = os.path.join(os.path.dirname(__file__), "../data/database.db")
@@ -64,8 +63,8 @@ def agregar_evento(personaje,titulo, descripcion_1_1, opcion_1_1, opcion_2_1, op
     conn.close()
 
 # funcion para devolve los datos del evento o resultados almacenados
-# se puede filtra por el personaje 
-def obtener_eventos(personaje=None):
+# se puede filtra por el personaje y retona un evento aletorio
+def obtener_eventos_aleatorios(personaje=None):
     conn, cursor = conectar()
     if personaje:
         cursor.execute("SELECT * FROM eventos WHERE personaje = ?",(personaje,))
@@ -73,7 +72,7 @@ def obtener_eventos(personaje=None):
         cursor.execute("SELECT * FROM eventos")
     eventos = cursor.fetchall()
     conn.close()
-    return eventos
+    return random.choice(eventos) 
 
 # funcion para eliminar 
 def eliminar_evento(id_evento):

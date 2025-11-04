@@ -62,6 +62,9 @@ def mostrar_menu_personajes(tmp=0.005):
 Elige tu destino:\n
 [1] Eldric, el Caballero Gris
     ➤ Honor y acero. Vive por su juramento roto.\n
+"""
+
+    guardado = """ # lo gurado para más adelante 
 [2] Lyra, la Arquera del Bosque Caído
     ➤ Precisión y sigilo. Sobrevive escuchando a los muertos.\n
 [3] Kael, el Mago Desterrado
@@ -73,7 +76,7 @@ Elige tu destino:\n
     while True:
         try:
             opcion_personaje = int(input(center_text("Elige un número: ")))
-            if opcion_personaje in (1, 2, 3):
+            if opcion_personaje == 1: # (1, 2, 3) LOS VALORES QUE TENIA
                 return opcion_personaje
             print(center_text("Opción inválida. Intenta nuevamente."))
 
