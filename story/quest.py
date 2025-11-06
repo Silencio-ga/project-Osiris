@@ -1,4 +1,5 @@
 from story.microhistorias_sql import obtener_eventos_aleatorios
+from story.menus import menu_universal
 from core.tool import *
 import time, random
 
@@ -39,14 +40,14 @@ Son los ecos de un mundo que intenta olvidarse a sí mismo.
 # ================
 
 # Historia 
-def micro_historia(personaje):
-    print(f"nombre {personaje.nombre}")
-    evento = obtener_eventos_aleatorios(personaje.nombre)
 
-    print(f"evento:  {evento}")
-    print()
+def micro_historia(personaje):
+    evento = obtener_eventos_aleatorios(personaje.nombre)
     _, personaje, titulo, descripcion_1_1, opcion_1_1, opcion_2_1, opcion_3_1, resultado_1, resultado_2, resultado_3 = evento
     titulo_lineas_decorativa(titulo)
+    efect_center_block_gradual(descripcion_1_1)
+    return opcion_1_1, opcion_2_1, opcion_3_1 , resultado_1, resultado_2, resultado_3
+
 
 if __name__ == "__main__":
     pass

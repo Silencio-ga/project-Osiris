@@ -93,14 +93,14 @@ if __name__ == "__main__":
     crear_tabla_eventos()
     agregar_evento(
         personaje='Eldric',
-        titulo='El juramento roto',
-        descripcion_1_1= 'El crepúsculo cae sobre un viejo puente cubierto de ceniza. En el centro, un grupo de bandidos acorrala a una mujer y a su hijo. Eldric observa en silencio. Podría intervenir… o seguir su camino. La última vez que intentó ser un héroe, su espada solo trajo muerte.',
+        titulo='El juramento roto...',
+        descripcion_1_1= '\nEl crepúsculo cae sobre un viejo puente cubierto de ceniza. \nEn el centro, un grupo de bandidos acorrala a una mujer y a su hijo.\nEldric observa en silencio. Podría intervenir… o seguir su camino.\nLa última vez que intentó ser un héroe, su espada solo trajo muerte.\n',
         opcion_1_1='Intervenir y luchar contra los bandidos.',
         opcion_2_1='Ignorar el suceso y continuar su viaje.',
         opcion_3_1='Esperar a que los bandidos terminen, y luego saquear los restos.',
-        resultado_1='Eldric derrota a los bandidos tras una dura batalla. La mujer le agradece, pero él queda herido. “Aún hay bondad en ti, aunque la odies.” [ +15 exp | -10 salud ]',
-        resultado_2='Eldric pasa de largo. El eco de los gritos lo acompaña durante toda la noche. “Quizás salvar vidas ya no es parte de tu deber…” [ sin cambios ]',
-        resultado_3='Eldric espera. Cuando todo termina, rebusca entre los cuerpos. Encuentra una bolsa de oro… y los ojos sin vida del niño. “El silencio del puente pesa más que el oro.” [ +30 oro ]'
+        resultado_1='Eldric derrota a los bandidos tras una dura batalla.\nLa mujer le agradece, pero él queda herido.\n“Aún hay bondad en ti, aunque la odies.” [ +15 exp ]\n',
+        resultado_2='Eldric pasa de largo.\nEl eco de los gritos lo acompaña durante toda la noche.\n“Quizás salvar vidas ya no es parte de tu deber…” [ sin cambios ]\n',
+        resultado_3='Eldric espera.\nCuando todo termina, rebusca entre los cuerpos.\nEncuentra una bolsa de oro… y los ojos sin vida del niño.\n“El silencio del puente pesa más que el oro.” [ +30 oro ]\n'
     )
 
 

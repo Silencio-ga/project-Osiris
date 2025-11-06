@@ -1,13 +1,15 @@
 #from core import game (es para arranca la lógica del juego)
-from core.tool import clear
-from story.menus import intro, mostrar_menu_personajes
+from core.tool import clear, efect_central_text
+from story.menus import intro, mostrar_menu_personajes, menu_universal
 from story.quest import prologo, micro_historia
 from core.combat import *
 from characters.personajes import *
+import sys, time
+
 
 def main():
     while True:
-        """
+        
         opcion_menu_inicio = intro()
 
         
@@ -19,9 +21,8 @@ def main():
         elif opcion_menu_inicio == 3: # 3. salir
             clear()
             break
-        """
-        usuario = mostrar_menu_personajes()
-
+        
+        usuario = mostrar_menu_personajes() 
 
         if usuario == 1:
             usuario = perso_caballero
@@ -30,14 +31,37 @@ def main():
         elif usuario == 3:
             usuario = perso_mago
 
-        micro_historia(usuario)
-        #combat(usuario, enem_zombi)
-    """
-    for i in range(2):
-        print("Cierrando el progama.")
-        print("Cierrando el progama..")
-        print("Cierrando el progama...")
-    """
+        opcion_1_1, opcion_2_1, opcion_3_1 , resultado_1, resultado_2, resultado_3 = micro_historia(usuario)
+
+        entrada = menu_universal("Elige un número: ",opcion_1_1, opcion_2_1, opcion_3_1)
+        
+        if entrada == 1:
+            combat(usuario,Zombi(vida=80, daño=20, nombre="bandido"))
+            print(resultado_1)
+            entrada = input("aprete 'entre' para continua")
+            if entrada == "":
+                clear()
+        elif entrada == 2:
+            efect_center_block_gradual(resultado_2)
+            entrada = input(center_text("aprete 'entre' para continua"))
+            if entrada == "":
+                clear()
+        elif entrada == 3:
+            efect_center_block_gradual(resultado_3)
+            entrada = input(center_text("aprete 'entre' para continua"))
+            if entrada == "":
+                clear()
+
+    for i in range(3):
+        for dots in [".   🌑", "..  🌓", "... 🌕"]:
+            sys.stdout.write(f"\rCerrando el programa{dots}")
+            sys.stdout.flush()
+            time.sleep(0.5)
+    print("\nListo. 👋")
+    time.sleep(0.5)
+    clear()
+
+
 
 if __name__ == '__main__':
     main()

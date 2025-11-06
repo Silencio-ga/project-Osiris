@@ -29,13 +29,8 @@ def combat(jugador, enemigo):
     
     #empieza el turno del jugador
     while jugador.vida > 0 and enemigo.vida > 0:
-        print(center_text(f"--- Turno {turno} ---"))
-        print(f"{jugador.nombre} HP: {jugador.vida}")
-        print(f"{enemigo.tipo} HP: {enemigo.vida}\n")
-
         # menu de acciones
         while True:
-
             # verificar si el enemigo murió
             if enemigo.vida <= 0:
                 efect_center_block_gradual(f"\n{enemigo.nombre} ha sido derrotado.\n¡Has ganado la batalla!")
@@ -43,6 +38,11 @@ def combat(jugador, enemigo):
             elif jugador.vida <= 0:
                 efect_center_block_gradual(f"\n{jugador.nombre} ha caído en batalla...\nEl {enemigo.tipo} prevalece.")
                 break
+            
+            clear()
+            print(center_text(f"--- Turno {turno} ---"))
+            print(f"{jugador.nombre} HP: {jugador.vida}") # estado del jugador 
+            print(f"{enemigo.nombre} HP: {enemigo.vida}\n") # estado del enemigo
 
             opcion_combate = mostrar_menu_combate()
             
@@ -74,3 +74,4 @@ def combat(jugador, enemigo):
     else:
         print(f"\n{jugador.nombre} cayó en combate...")
         return {"oro": 0, "xp": 0}
+
