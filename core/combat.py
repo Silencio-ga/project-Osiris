@@ -37,7 +37,7 @@ def combat(jugador, enemigo):
       # acción del jugador
         if opcion == 1:
             print(f"\n{jugador.nombre} ataca causando {jugador.daño} de daño!")
-            enemigo.recibir_daño(jugador.daño, jugador.enemigo)
+            enemigo.recibir_daño(jugador.daño, jugador.nombre)
         elif opcion == 2:
             jugador.habilidad_especial(enemigo)
         else:
@@ -48,11 +48,11 @@ def combat(jugador, enemigo):
 
         time.sleep(1)
         print(f"\n{enemigo.nombre} contraataca causando {enemigo.daño} de daño.")
-        jugador.recibir_daño(enemigo.daño, enemigo.enemigo)
+        jugador.recibir_daño(enemigo.daño, enemigo.nombre)
 
         # verificar si el jugador murio
         if jugador.vida <= 0:
-            efect_center_block_gradual(f"\n{jugador.nombre} ha caído en batalla...\nEl {enemigo.enemigo} prevalece.")
+            efect_center_block_gradual(f"\n{jugador.nombre} ha caído en batalla...\nEl {enemigo.nombre} prevalece.")
             break
 
         turno += 1
@@ -61,7 +61,7 @@ def combat(jugador, enemigo):
 # fin del combate
 
     if jugador.vida > 0:
-        print(f"\n{jugador.nombre} ganó la batalla contra el {enemigo.enemigo}!")
+        print(f"\n{jugador.nombre} ganó la batalla contra el {enemigo.nombre}!")
         oro_ganado = random.randint(5, 25)
         xp_ganada = random.randint(10, 40)
 
