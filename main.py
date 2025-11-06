@@ -9,7 +9,7 @@ import sys, time
 
 def main():
     while True:
-        
+        """
         opcion_menu_inicio = intro()
 
         
@@ -21,7 +21,7 @@ def main():
         elif opcion_menu_inicio == 3: # 3. salir
             clear()
             break
-        
+        """
         usuario = mostrar_menu_personajes() 
 
         if usuario == 1:
@@ -36,9 +36,11 @@ def main():
         entrada = menu_universal("Elige un número: ",opcion_1_1, opcion_2_1, opcion_3_1)
         
         if entrada == 1:
-            combat(usuario,Zombi(vida=80, daño=20, nombre="bandido"))
-            print(resultado_1)
-            entrada = input("aprete 'entre' para continua")
+            combat(usuario,Zombi(vida=80, daño=20,nombre="bandido")) # ivo tiene que hacer una corrección 
+            entrada = input(center_text("aprete 'entre' para continua"))
+            clear()
+            efect_center_block_gradual(resultado_1)
+            entrada = input(center_text("aprete 'entre' para continua"))
             if entrada == "":
                 clear()
         elif entrada == 2:

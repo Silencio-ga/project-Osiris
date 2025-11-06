@@ -1,19 +1,18 @@
 import  random
 
 class Entidad:
-    def __init__(self,vida:int, daño:int, nombre:str, tipo: str = "")->None:
+    def __init__(self,vida:int, daño:int, nombre:str)->None:
         self.vida = vida
         self.daño = daño
         self.nombre = nombre
-        self.tipo = tipo or self.__class__.__name__ # guarda el tipo de enemigo(zombi,esqueleto)
 
-    def recibir_daño(self, daño, tipo)->None: #funcion de como reciben daño los personajes
+    def recibir_daño(self, daño, enemigo)->None: #funcion de como reciben daño los personajes
         self.vida -= daño
         if self.vida <= 0:
             self.vida = 0
             print (f"{self.nombre} Murió")
         else:
-            print(f"{self.nombre} recibió daño de {tipo}\n Vida restante: {self.vida}")
+            print(f"{self.nombre} recibió daño de {enemigo.nombre}\n Vida restante: {self.vida}")
 
 #===========================
 #       Clase personajes
@@ -21,30 +20,30 @@ class Entidad:
 
 class Caballero(Entidad):
     def __init__(self, vida, daño, nombre):
-        super().__init__(vida, daño, nombre, tipo="Caballero")
+        super().__init__(vida, daño, nombre)
 
     def habilidad_especial(self, enemigo):
         print(f"{self.nombre} levanta su escudo y contraataca con furia sagrada!")
         daño_habilidad = self.daño + 10
-        enemigo.recibir_daño(daño_habilidad, self.tipo)
+        enemigo.recibir_daño(daño_habilidad, enemigo)
 
 class Arquera(Entidad):
     def __init__(self, vida, daño, nombre):
-        super().__init__(vida, daño, nombre, tipo="Arquera")
+        super().__init__(vida, daño, nombre)
 
     def habilidad_especial(self, enemigo):
         print(f"{self.nombre} dispara una lluvia de flechas precisas!")
         daño_habilidad = self.daño + random.randint(5, 15)
-        enemigo.recibir_daño(daño_habilidad, self.tipo)
+        enemigo.recibir_daño(daño_habilidad, enemigo)
 
 class Mago(Entidad):
     def __init__(self, vida, daño, nombre):
-        super().__init__(vida, daño, nombre, tipo="Mago")
+        super().__init__(vida, daño, nombre)
 
     def habilidad_especial(self, enemigo):
         print(f"{self.nombre} lanza un hechizo devastador!")
         daño_habilidad = self.daño * 2
-        enemigo.recibir_daño(daño_habilidad, self.tipo)
+        enemigo.recibir_daño(daño_habilidad)
 
 
 #===========================
@@ -58,6 +57,21 @@ class Zombi(Entidad):
 class Esqueleto(Entidad):
     def __init__(self, vida, daño, nombre="Esqueleto"):
         super().__init__(vida, daño, nombre)
+
+class jefe(Entidad):
+    def __init__(self,vida, daño):
+        super().__init__(vida, daño, nombre="El rey de ceniza")
+    
+    def ataque_renacer_oscura(self, usuario):
+        if self.vida < 30:
+            daño_habilidad = self.daño + 5
+            print(f"{self.nombre} absorbe con su oscuridad la sangre de {usuario.nombre}")
+            usuario.recibir_daño(daño_habilidad)
+            self.vida += daño_habilidad // 2
+            print(f"{self.nombre} recupera {daño_habilidad // 2} puntos de vida")
+        else:
+            usuario.recibir_daño(self.daño)
+    
 
 """
 class Grupo_enemigo: 

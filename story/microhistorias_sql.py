@@ -98,9 +98,9 @@ if __name__ == "__main__":
         opcion_1_1='Intervenir y luchar contra los bandidos.',
         opcion_2_1='Ignorar el suceso y continuar su viaje.',
         opcion_3_1='Esperar a que los bandidos terminen, y luego saquear los restos.',
-        resultado_1='Eldric derrota a los bandidos tras una dura batalla.\nLa mujer le agradece, pero él queda herido.\n“Aún hay bondad en ti, aunque la odies.” [ +15 exp ]\n',
-        resultado_2='Eldric pasa de largo.\nEl eco de los gritos lo acompaña durante toda la noche.\n“Quizás salvar vidas ya no es parte de tu deber…” [ sin cambios ]\n',
-        resultado_3='Eldric espera.\nCuando todo termina, rebusca entre los cuerpos.\nEncuentra una bolsa de oro… y los ojos sin vida del niño.\n“El silencio del puente pesa más que el oro.” [ +30 oro ]\n'
+        resultado_1='Eldric derrota a los bandidos tras una dura batalla.\nLa mujer le agradece, pero él queda herido.\n“Aún hay bondad en ti, aunque la odies.”\n',
+        resultado_2='Eldric pasa de largo.\nEl eco de los gritos lo acompaña durante toda la noche.\n“Quizás salvar vidas ya no es parte de tu deber…”\n',
+        resultado_3='Eldric espera.\nCuando todo termina, rebusca entre los cuerpos.\nEncuentra una bolsa de oro… y los ojos sin vida del niño.\n“El silencio del puente pesa más que el oro.”\n'
     )
 
 
