@@ -26,29 +26,53 @@ def combat(jugador, enemigo):
     clear()
     titulo_lineas_decorativa("C O M B A T E",tmp=0.005)
     turno = 1
+
+    # detectar si el enemigo tiene habilidades especiales
+    ataques_enemigo = [
+        getattr(enemigo, func)
+        for func in dir(enemigo)
+        if callable(getattr(enemigo, func)) and func.startswith("ataque_")
+    ]
     
     while jugador.vida > 0 and enemigo.vida > 0:
-        clear()
+
         print(center_text(f"--- Turno {turno} ---"))
         print(f"{jugador.nombre} HP: {jugador.vida} | {enemigo.nombre} HP: {enemigo.vida}\n")
-
-        opcion = mostrar_menu_combate()
-      
-      # acción del jugador
-        if opcion == 1:
-            print(f"\n{jugador.nombre} ataca causando {jugador.daño} de daño!")
-            enemigo.recibir_daño(jugador.daño, jugador.nombre)
-        elif opcion == 2:
-            jugador.habilidad_especial(enemigo)
-        else:
-            print("Opcion invalida. Se pierde el turno.")
-            time.sleep(1)
         
-        #turno del enemigo 
+        # ==================
+        # turno del jugador
+        # ==================
+        
+        opcion = mostrar_menu_combate()
+        
+        if opcion == 1: # atacar 
+            enemigo.recibir_daño(jugador.daño, jugador)
+            print(f"\n{jugador.nombre} ataca causando {jugador.daño} de daño!")
+        elif opcion == 2: # habilidad especial
+            jugador.habilidad_especial(enemigo)
+        
+        time.sleep(0.5)
 
-        time.sleep(1)
-        print(f"\n{enemigo.nombre} contraataca causando {enemigo.daño} de daño.")
-        jugador.recibir_daño(enemigo.daño, enemigo.nombre)
+        if enemigo.vida <= 0: # verificar si el enemigo murio
+            efect_center_block_gradual(f"\n{enemigo.nombre} ha caído en batalla...\nEl {enemigo.nombre} prevalece.\n")
+            break
+
+        # ================= 
+        # turno del enemig
+        # =================
+        print()
+        time.sleep(0.5)
+        print(center_text("El enemigo prepara su ataque...\n"))
+        time.sleep(0.8)
+
+        # Elegir aletoriamente su ataque
+
+        if ataques_enemigo:
+            ataque = random.choice(ataques_enemigo)
+            jugador.recibir_daño(ataque)
+        else:
+            jugador.recibir_daño(enemigo.daño, enemigo)
+            print(f"\n{enemigo.nombre} contraataca causando {enemigo.daño} de daño.")
 
         # verificar si el jugador murio
         if jugador.vida <= 0:
@@ -59,16 +83,17 @@ def combat(jugador, enemigo):
         time.sleep(1)
 
 # fin del combate
-
+    """
     if jugador.vida > 0:
         print(f"\n{jugador.nombre} ganó la batalla contra el {enemigo.nombre}!")
-        oro_ganado = random.randint(5, 25)
-        xp_ganada = random.randint(10, 40)
+        #oro_ganado = random.randint(5, 25)
+        #xp_ganada = random.randint(10, 40)
 
-        print(f"Oro ganado: {oro_ganado} | XP ganada: {xp_ganada}")
+        #print(f"Oro ganado: {oro_ganado} | XP ganada: {xp_ganada}")
         
-        return {"oro": oro_ganado, "xp": xp_ganada}
+        #return {"oro": oro_ganado, "xp": xp_ganada}
     else:
         print(f"\n{jugador.nombre} cayó en combate...")
-        return {"oro": 0, "xp": 0} 
+        #return {"oro": 0, "xp": 0} 
+    """
 
