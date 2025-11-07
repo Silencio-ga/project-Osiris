@@ -51,11 +51,11 @@ class Mago(Entidad):
 #===========================
 
 class Zombi(Entidad):
-    def __init__(self, vida, daño, nombre="Zombi"):
+    def __init__(self, vida=80, daño=20, nombre="Zombi"):
         super().__init__(vida, daño, nombre)
 
 class Esqueleto(Entidad):
-    def __init__(self, vida, daño, nombre="Esqueleto"):
+    def __init__(self, vida=60, daño=25, nombre="Esqueleto"):
         super().__init__(vida, daño, nombre)
 
 class jefe(Entidad):

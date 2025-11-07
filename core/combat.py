@@ -54,11 +54,11 @@ def combat(jugador, enemigo):
         time.sleep(0.5)
 
         if enemigo.vida <= 0: # verificar si el enemigo murio
-            efect_center_block_gradual(f"\n{enemigo.nombre} ha caído en batalla...\nEl {enemigo.nombre} prevalece.\n")
+            efect_center_block_gradual(f"\n{enemigo.nombre} ha caído en batalla...\n {jugador.nombre} prevalece.\n")
             break
 
         # ================= 
-        # turno del enemig
+        # turno del enemigo
         # =================
         print()
         time.sleep(0.5)

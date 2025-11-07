@@ -36,21 +36,21 @@ def main():
         entrada = menu_universal("Elige un número: ",opcion_1_1, opcion_2_1, opcion_3_1)
         
         if entrada == 1:
-            combat(usuario,Zombi(vida=80, daño=20,nombre="bandido")) # ivo tiene que hacer una corrección 
-            entrada = input(center_text("aprete 'entre' para continua"))
+            combat(usuario,Zombi(nombre="bandido")) # ivo tiene que hacer una corrección 
+            entrada = input(center_text("apriete 'enter' para continuar"))
             clear()
             efect_center_block_gradual(resultado_1)
-            entrada = input(center_text("aprete 'entre' para continua"))
+            entrada = input(center_text("apriete 'enter' para continuar"))
             if entrada == "":
                 clear()
         elif entrada == 2:
             efect_center_block_gradual(resultado_2)
-            entrada = input(center_text("aprete 'entre' para continua"))
+            entrada = input(center_text("apriete 'enter' para continuar"))
             if entrada == "":
                 clear()
         elif entrada == 3:
             efect_center_block_gradual(resultado_3)
-            entrada = input(center_text("aprete 'entre' para continua"))
+            entrada = input(center_text("apriete 'enter' para continuar"))
             if entrada == "":
                 clear()
 
