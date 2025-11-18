@@ -9,6 +9,7 @@ import sys, time
 
 def main():
     while True:
+        clear()
         """
         opcion_menu_inicio = intro()
 

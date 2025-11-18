@@ -6,13 +6,13 @@ class Entidad:
         self.daño = daño
         self.nombre = nombre
 
-    def recibir_daño(self, daño, enemigo)->None: #funcion de como reciben daño los personajes
+    def recibir_daño(self, daño, lo_causa)->None: #funcion de como reciben daño los personajes
         self.vida -= daño
         if self.vida <= 0:
             self.vida = 0
             print (f"{self.nombre} Murió")
         else:
-            print(f"{self.nombre} recibió daño de {enemigo.nombre}\n Vida restante: {self.vida}")
+            print(f"{self.nombre} recibió {daño} de daño de {lo_causa.nombre} \nVida restante de {self.nombre}: {self.vida}")
 
 #===========================
 #       Clase personajes
@@ -22,10 +22,10 @@ class Caballero(Entidad):
     def __init__(self, vida, daño, nombre):
         super().__init__(vida, daño, nombre)
 
-    def habilidad_especial(self, enemigo):
+    def habilidad_especial(self, enemigo,lo_causa):
         print(f"{self.nombre} levanta su escudo y contraataca con furia sagrada!")
         daño_habilidad = self.daño + 10
-        enemigo.recibir_daño(daño_habilidad, enemigo)
+        enemigo.recibir_daño(daño_habilidad, lo_causa)
 
 class Arquera(Entidad):
     def __init__(self, vida, daño, nombre):

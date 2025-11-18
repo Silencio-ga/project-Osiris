@@ -38,11 +38,11 @@ class Comerciante(NPC):
             "Arcos": self.arcos,
             "Bastones": self.bastones
         }
-
+"""
     def mostrar_inventario_comerciante(inventario_comerciante):
         print (f"\nHola soy {Comerciante.nombre}. ¿Que estas buscando?")
         while True:
             
-
+"""
 
 

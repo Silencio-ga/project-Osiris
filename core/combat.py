@@ -47,22 +47,32 @@ def combat(jugador, enemigo):
         
         if opcion == 1: # atacar 
             enemigo.recibir_daño(jugador.daño, jugador)
-            print(f"\n{jugador.nombre} ataca causando {jugador.daño} de daño!")
         elif opcion == 2: # habilidad especial
-            jugador.habilidad_especial(enemigo)
+            jugador.habilidad_especial(enemigo,jugador)
         
         time.sleep(0.5)
 
         if enemigo.vida <= 0: # verificar si el enemigo murio
-            efect_center_block_gradual(f"\n{enemigo.nombre} ha caído en batalla...\n {jugador.nombre} prevalece.\n")
+            efect_center_block_gradual(f"\n{enemigo.nombre} ha caído en batalla...\n{jugador.nombre} prevalece.\n")
             break
-
+        
+        entrada = input(center_text("apriete 'enter' para continuar"))
+        clear()
+        
         # ================= 
         # turno del enemigo
         # =================
         print()
+        
+        texto = ["El enemigo prepara su ataque.  \n", "El enemigo prepara su ataque.. \n", "El enemigo prepara su ataque...\n"]
+        
         time.sleep(0.5)
-        print(center_text("El enemigo prepara su ataque...\n"))
+        for _ in range(2):
+            for t in texto:
+                print(center_text(t))
+                time.sleep(0.3)
+                clear()
+        
         time.sleep(0.8)
 
         # Elegir aletoriamente su ataque
@@ -72,15 +82,17 @@ def combat(jugador, enemigo):
             jugador.recibir_daño(ataque)
         else:
             jugador.recibir_daño(enemigo.daño, enemigo)
-            print(f"\n{enemigo.nombre} contraataca causando {enemigo.daño} de daño.")
-
+        
         # verificar si el jugador murio
         if jugador.vida <= 0:
             efect_center_block_gradual(f"\n{jugador.nombre} ha caído en batalla...\nEl {enemigo.nombre} prevalece.")
             break
+        
+        entrada = input(center_text("apriete 'enter' para continuar"))
 
         turno += 1
         time.sleep(1)
+        clear()
 
 # fin del combate
     """
